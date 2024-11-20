@@ -1,0 +1,3 @@
+* Emacs Configurations for Windows
+
+[[https://lucidmanager.org/productivity/emacs-windows/][Emacs for Writing]]
