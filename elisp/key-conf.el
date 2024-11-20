@@ -32,6 +32,9 @@
   (evil-global-set-key 'normal (kbd "<SPC>bb") 'consult-buffer)
   (evil-global-set-key 'normal (kbd "<SPC>bo") 'consult-buffer-other-window)
   (evil-global-set-key 'normal (kbd "<SPC>bt") 'consult-buffer-other-tab)
+  (evil-global-set-key 'normal (kbd "<SPC>bk") 'kill-current-buffer)
+  (evil-global-set-key 'normal (kbd "<SPC>bn") 'next-buffer)
+  (evil-global-set-key 'normal (kbd "<SPC>bp") 'previous-buffer)
 
   (evil-global-set-key 'normal (kbd "<SPC>gg") 'consult-ripgrep)
   (evil-global-set-key 'normal (kbd "<SPC>gi") 'consult-imenu)
