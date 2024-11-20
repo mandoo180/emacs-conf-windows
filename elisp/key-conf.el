@@ -6,8 +6,7 @@
   (setq which-key-idle-delay 1))
 
 (use-package evil
-  :config  
-  (evil-global-set-key 'insert (kbd "jk") 'evil-normal-state)
+  :config
   (evil-global-set-key 'insert (kbd "C-f") 'forward-char)
   (evil-global-set-key 'insert (kbd "C-b") 'backward-char)
   (evil-global-set-key 'insert (kbd "C-n") 'forward-line)
@@ -41,5 +40,11 @@
 
   (add-hook 'prog-mode-hook (lambda ()
                               (evil-local-mode 1))))
+
+(use-package key-chord
+  :config
+  (setq key-chord-two-keys-delay 0.5)
+  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+  (key-chord-mode 1))
 
 (provide 'key-conf)
