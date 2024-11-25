@@ -36,10 +36,7 @@
   (evil-global-set-key 'normal (kbd "<SPC>bp") 'previous-buffer)
 
   (evil-global-set-key 'normal (kbd "<SPC>gg") 'consult-ripgrep)
-  (evil-global-set-key 'normal (kbd "<SPC>gi") 'consult-imenu)
-
-  (add-hook 'prog-mode-hook (lambda ()
-                              (evil-local-mode 1))))
+  (evil-global-set-key 'normal (kbd "<SPC>gi") 'consult-imenu))
 
 (use-package key-chord
   :config

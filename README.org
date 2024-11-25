@@ -1,3 +1,16 @@
 * Emacs Configurations for Windows
 
+[[http://ftp.gnu.org/gnu/emacs/windows/emacs-29/][Download Emacs]]
+
 [[https://lucidmanager.org/productivity/emacs-windows/][Emacs for Writing]]
+
+** Before running Emacs
+
+run cmd.exe as with administrator's authority
+
+#+begin_src text
+  setx HOME %USERPROFILE%
+  setx PATH "%PATH%;C:\Program Files\Emacs\emacs-29.4\bin"
+#+end_src
+
+Emacs Properties > shortcut > startin %USERPROFILE%
