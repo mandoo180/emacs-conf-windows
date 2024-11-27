@@ -49,6 +49,8 @@
 (menu-bar-mode -1)
 (column-number-mode)
 
+(setq-default inhibit-startup-screen t)
+(setq-default inhibit-startup-message t)
 (setq-default locale-coding-system 'utf-8)
 (setq-default keyboard-coding-system 'utf-8)
 (setq-default locale-coding-system 'utf-8)

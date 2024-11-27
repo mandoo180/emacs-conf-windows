@@ -4,7 +4,7 @@
   ;; (variable-pitch-mode 1)
   (setq-local electric-pair-inhibit-predicate `(lambda (c)
                                                  (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))
-  (visual-line-mode 1))
+  (visual-line-mode -1))
 
 (use-package org
   :pin org
@@ -24,17 +24,6 @@
         org-export-kill-product-buffer-when-displayed t
         org-tags-column 80))
 
-;; visual fill column
-(defun k/org-mode-visual-fill ()
-  (setq visual-fill-column-width 100
-        visual-fill-column-center-text nil)
-  (visual-fill-column-mode 1))
-
-(use-package visual-fill-column
-  :hook
-  (org-mode . k/org-mode-visual-fill))
-
-;; structure templates
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 (with-eval-after-load 'org
   (require 'org-tempo)
@@ -63,15 +52,5 @@
       (sql . t)
       (sqlite . t)))))
 
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
-
-(defun k/org-babel-tangle-config ()
-  (when (string-equal (file-name-nondirectory (buffer-file-name)) "init.org")
-    (let ((org-confirm-babel-evaluate nil))
-      (org-babel-tangle))))
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'k/org-babel-tangle-config)))
 
 (provide 'org-conf)

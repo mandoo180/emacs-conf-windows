@@ -6,11 +6,16 @@
 
 ** Before running Emacs
 
-run cmd.exe as with administrator's authority
+run cmd.exe as with administrator's authority then
 
 #+begin_src text
   setx HOME %USERPROFILE%
-  setx PATH "%PATH%;C:\Program Files\Emacs\emacs-29.4\bin"
+  setx /M PATH "C:\Program Files\Emacs\emacs-29.4\bin;%PATH%"
+  setx /M PATH "%USERPROFILE%\scoop\shims;%PATH%"
 #+end_src
+
+because GNU findutils and coreutils should precede win32 path
+
+*Setting default path for link file*
 
 Emacs Properties > shortcut > startin %USERPROFILE%

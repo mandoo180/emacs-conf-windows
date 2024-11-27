@@ -31,8 +31,7 @@
 
 (add-hook 'dired-mode-hook (lambda()
 			     (dired-hide-details-mode t)
-			     (all-the-icons-dired-mode t)
-			     (dired-preview-mode t)))
+			     (all-the-icons-dired-mode t)))
 
 (define-key dired-mode-map (kbd "b") 'dired-up-directory)
 (define-key dired-mode-map (kbd "H") 'dired-hide-details-mode)
