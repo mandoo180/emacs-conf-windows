@@ -1,3 +1,7 @@
-custom.el
+auto-save-list/
 elpa/
 var/
+etc/
+server/
+*.bkp
+custom.el
