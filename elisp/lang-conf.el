@@ -113,6 +113,47 @@ there is no current file, eval the current buffer."
 
   (add-to-list 'auto-mode-alist '("\\.js$" . js-mode)))
 
+(use-package powershell)
+
+(defun scratch-buffer-string(mode)
+  (with-current-buffer (concat "*scratch " mode "*" ) (buffer-substring-no-properties (point-min) (point-max))))
+
+(defun scratch-buffer-open(mode)
+  (switch-to-buffer (get-buffer-create (concat "*scratch " mode "*"))))
+
+(defun scratch-pwsh-buffer-string()
+  (scratch-buffer-string "pwsh"))
+
+(defun scratch-pwsh()
+  (interactive)
+  (scratch-buffer-open "pwsh")
+  (if (not (string-equal major-mode "powershell-mode"))
+      (powershell-mode)))
+
+(defun scratch-buffer-run(mode command)
+  (get-buffer-create (concat "*scratch " mode " output*"))
+  (with-current-buffer (concat "*scratch " mode " output*")
+    (goto-char (point-max))
+    (switch-to-buffer-other-window (concat "*scratch " mode " output*"))
+    (insert (eshell-command-result command))))
+
+(defun scratch-pwsh-buffer-run()
+  (interactive)
+  (scratch-buffer-run "pwsh" "pwsh -Command (scratch-pwsh-buffer-string)"))
+
+(defun scratch-js-buffer-string()
+  (scratch-buffer-string "js"))
+
+(defun scratch-js()
+  (interactive)
+  (scratch-buffer-open "js")
+  (if (not (string-equal major-mode "js2-mode"))
+      (js2-mode)))
+
+(defun scratch-js-buffer-run()
+  (interactive)
+  (scratch-buffer-run "js" "node -e (scratch-js-buffer-string)"))
+
 (use-package flycheck
   :ensure t
   :init
