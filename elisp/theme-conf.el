@@ -2,10 +2,7 @@
 ;; M: (font-family-list) shows available fonts
 (set-face-attribute 'default nil :font "JetBrainsMono NF Thin" :height 110)
 
-(use-package doom-themes
-  :ensure t
-  :config
-  (load-theme 'doom-one))
+(load-theme 'modus-vivendi)
 
 (use-package rainbow-mode
   :config
@@ -21,13 +18,13 @@
 (use-package nerd-icons
   :ensure nil) ;; M-x nerd-icons-install-fonts
 
-(use-package beacon
-  :config
-  (beacon-mode nil))
+;; (use-package beacon
+;;   :config
+;;   (beacon-mode nil))
 
-(use-package doom-modeline
-  :init
-  (doom-modeline-mode 1))
+;; (use-package doom-modeline
+;;   :init
+;;   (doom-modeline-mode 1))
 
 (use-package paren
   :init
@@ -44,5 +41,18 @@
   (global-paren-face-mode))
 
 (add-hook 'after-save-hook 'check-parens nil t)
+
+(defun simple-mode-line-render (left right)
+  "Return a string of `window-width' length containing LEFT, and RIGHT
+ aligned respectively."
+  (let* ((available-width (- (window-width) (length left) 2)))
+    (format (format " %%s %%%ds " available-width) left right)))
+
+(setq-default mode-line-format '((:eval (simple-mode-line-render (format-mode-line '(("%b[%*]")
+                                                                                     "[" (:eval mode-line-mule-info) "]"
+                                                                                     "[" (:eval mode-name) "]"
+                                                                                     "[" (:eval vc-mode) "]"))
+                                                                 (format-mode-line '((:eval "%p%%")))))))
+(set-face-attribute 'mode-line nil :box nil)
 
 (provide 'theme-conf)

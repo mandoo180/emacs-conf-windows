@@ -25,13 +25,7 @@
       dired-kill-when-opening-new-dired-buffer t
       delete-by-moving-to-trash t)
 
-(use-package all-the-icons-dired
-  :ensure t
-  :config)
-
-(add-hook 'dired-mode-hook (lambda()
-			     (dired-hide-details-mode t)
-			     (all-the-icons-dired-mode t)))
+(add-hook 'dired-mode-hook (lambda() (dired-hide-details-mode t)))
 
 (define-key dired-mode-map (kbd "b") 'dired-up-directory)
 (define-key dired-mode-map (kbd "H") 'dired-hide-details-mode)

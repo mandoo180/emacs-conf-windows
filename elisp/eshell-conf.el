@@ -101,7 +101,7 @@ more-helpful local prompt."
   (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
 
   ;; Prompt settings
-  (setq-default eshell-prompt-function #'eshell/eshell-local-prompt-function)
+  ;; (setq-default eshell-prompt-function #'eshell/eshell-local-prompt-function)
 
   (setq eshell-history-size         10000
         eshell-buffer-maximum-lines 10000
@@ -121,14 +121,11 @@ more-helpful local prompt."
               (add-to-list 'eshell-visual-commands "zsh")
               (add-to-list 'eshell-visual-commands "vim")
 
+              (eshell/alias "l" "ls -hl $1")
+              (eshell/alias "ll" "ls -ahl $1")
               (eshell/alias "ff" "find-file $1")
               (eshell/alias "emacs" "find-file $1")
-              (eshell/alias "ffo" "find-file-other-window $1")
-              ;; The 'ls' executable requires the gnu version on mac
-              (let ((ls (if (file-exists-p "/usr/local/bin/gls")
-                            "/usr/local/bin/gls"
-                          "/bin/ls")))
-                (eshell/alias "ll" (concat ls " -AlohG --color=always"))))))
+              (eshell/alias "ffo" "find-file-other-window $1"))))
 
 (use-package eshell-git-prompt
   :after eshell)
@@ -160,7 +157,6 @@ multiple eshell windows easier."
     (split-window-vertically (- height))
     (other-window 1)
     (eshell "new")
-    (insert (concat "ls"))
     (eshell-send-input)))
 
 (provide 'eshell-conf)
