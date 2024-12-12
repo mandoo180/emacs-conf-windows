@@ -1,8 +1,8 @@
 ;; scoop install nerd-fonts/JetBrainsMono-NF
 ;; M: (font-family-list) shows available fonts
-(set-face-attribute 'default nil :font "JetBrainsMono NF Thin" :height 110)
+(set-face-attribute 'default nil :font "JetBrainsMono NF Thin" :height 100)
 
-(load-theme 'modus-vivendi)
+;; (load-theme 'modus-vivendi)
 
 (use-package rainbow-mode
   :config
@@ -18,13 +18,13 @@
 (use-package nerd-icons
   :ensure nil) ;; M-x nerd-icons-install-fonts
 
-;; (use-package beacon
-;;   :config
-;;   (beacon-mode nil))
+(use-package doom-themes
+  :config
+  (load-theme 'doom-one))
 
-;; (use-package doom-modeline
-;;   :init
-;;   (doom-modeline-mode 1))
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode 1))
 
 (use-package paren
   :init
@@ -42,17 +42,19 @@
 
 (add-hook 'after-save-hook 'check-parens nil t)
 
-(defun simple-mode-line-render (left right)
-  "Return a string of `window-width' length containing LEFT, and RIGHT
- aligned respectively."
-  (let* ((available-width (- (window-width) (length left) 2)))
-    (format (format " %%s %%%ds " available-width) left right)))
+;; Custom mode line
+;; (defun simple-mode-line-render (left right)
+;;   "Return a string of `window-width' length containing LEFT, and RIGHT
+;;  aligned respectively."
+;;   (let* ((available-width (- (window-width) (length left) 2)))
+;;     (format (format " %%s %%%ds " available-width) left right)))
 
-(setq-default mode-line-format '((:eval (simple-mode-line-render (format-mode-line '(("%b[%*]")
-                                                                                     "[" (:eval mode-line-mule-info) "]"
-                                                                                     "[" (:eval mode-name) "]"
-                                                                                     "[" (:eval vc-mode) "]"))
-                                                                 (format-mode-line '((:eval "%p%%")))))))
+;; (setq-default mode-line-format '((:eval (simple-mode-line-render (format-mode-line '(("%b[%*]")
+;;                                                                                      "[" (:eval mode-line-mule-info) "]"
+;;                                                                                      "[" (:eval mode-name) "]"
+;;                                                                                      "[" (:eval vc-mode) "]"))
+;;                                                                  (format-mode-line '((:eval "%p%%")))))))
 (set-face-attribute 'mode-line nil :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
 
 (provide 'theme-conf)

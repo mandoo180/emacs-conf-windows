@@ -1,10 +1,15 @@
 ;; M-. goto definition
 ;; M-, goto implementation
 ;; M-? xref-find-references
+
+;; python-lsp-server's executable is pylsp
+;; pip install python-lsp-server flake8
+;; npm i -g install typescript typescript-language-server vscode-langservers-extracted
 (use-package eglot
   :ensure t
   :defer t
   :hook
+  (mhtml-mode . eglot-ensure)
   (python-mode . eglot-ensure)
   (javascript-mode . eglot-ensure)
   (typescript-ts-mode . eglot-ensure))
@@ -18,10 +23,8 @@
 
 (global-tree-sitter-mode t)
 
-
 (setq-default initial-scratch-message
-              (concat ";; Happy hacking, " user-login-name "!!\n\n"))
-
+              (concat ";; " user-login-name "'s cratch pad.\n\n"))
 
 (use-package ielm
   :init
@@ -164,6 +167,9 @@ there is no current file, eval the current buffer."
 (use-package eldoc
   :diminish eldoc-mode
   :init  (setq eldoc-idle-delay 0.1))
+
+;; use pyvenv-activate/deactivate
+(use-package pyvenv)
 
 
 (provide 'lang-conf)
