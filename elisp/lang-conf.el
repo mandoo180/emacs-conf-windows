@@ -1,17 +1,14 @@
 ;; M-. goto definition
 ;; M-, goto implementation
 ;; M-? xref-find-references
-
-;; python-lsp-server's executable is pylsp
-;; pip install python-lsp-server flake8
-;; npm i -g install typescript typescript-language-server vscode-langservers-extracted
 (use-package eglot
   :ensure t
   :defer t
   :hook
-  (mhtml-mode . eglot-ensure)
-  (python-mode . eglot-ensure)
-  (javascript-mode . eglot-ensure)
+  (c-mode . eglot-ensure) ;; scoop bucket add versions; scoop install versions/mingw-winlibs-llvm // install clang, clangd
+  (mhtml-mode . eglot-ensure) ;; npm i -g vscode-langservers-extracted
+  (python-mode . eglot-ensure) ;; pip install python-lsp-server flake8 // ;; python-lsp-server's executable is pylsp
+  (javascript-mode . eglot-ensure) ;; npm i -g install typescript typescript-language-server
   (typescript-ts-mode . eglot-ensure))
 
 (use-package tree-sitter

@@ -25,6 +25,8 @@
 (use-package doom-modeline
   :init
   (doom-modeline-mode 1))
+(set-face-attribute 'mode-line nil :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
 
 (use-package paren
   :init
@@ -54,7 +56,5 @@
 ;;                                                                                      "[" (:eval mode-name) "]"
 ;;                                                                                      "[" (:eval vc-mode) "]"))
 ;;                                                                  (format-mode-line '((:eval "%p%%")))))))
-(set-face-attribute 'mode-line nil :box nil)
-(set-face-attribute 'mode-line-inactive nil :box nil)
 
 (provide 'theme-conf)

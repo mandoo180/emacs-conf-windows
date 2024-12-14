@@ -55,7 +55,8 @@
   ("M-s l" . consult-line)
   ("M-s L" . consult-line-multi)
   ("M-s k" . consult-keep-lines)
-  ("M-s u" . consult-focus-lines))
+  ("M-s u" . consult-focus-lines)
+  ("M-s h" . consult-org-heading))
 
 (use-package corfu
   ;; Optional customizations
@@ -99,7 +100,7 @@
   (setq recentf-max-saved-items 200)
   (setq recentf-filename-handlers
     (append '(abbreviate-file-name) recentf-filename-handlers))
-  (define-key recentf-mode-map (kbd "C-x C-r") 'recentf)
+  (define-key recentf-mode-map (kbd "C-x r e") 'recentf)
   (recentf-mode))
 
 
