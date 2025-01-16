@@ -1,9 +1,14 @@
+;; -*- lexical-binding: t; -*-
+
+
 (dolist (mode '(text-mode-hook
                 prog-mode-hook
                 conf-mode-hook))
   (add-hook mode (lambda ()
-                   (display-line-numbers-mode t)
-                   (display-fill-column-indicator-mode -1))))
+                   (hl-line-mode 1)
+                   (display-line-numbers-mode 1)
+                   (setq display-line-numbers-width 6)
+                   (display-fill-column-indicator-mode 0))))
 
 (add-hook 'after-init-hook 'electric-pair-mode)
 (add-hook 'after-init-hook 'electric-indent-mode)
@@ -154,5 +159,8 @@
   (use-package visual-regexp-steroids :ensure t)
   :bind (("C-c r" . vr/replace)
          ("C-c q" . vr/query-replace)))
+
+(global-set-key (kbd "C-<tab>") #'next-buffer)
+(global-set-key (kbd "C-S-<tab>") #'previous-buffer)
 
 (provide 'editing-conf)

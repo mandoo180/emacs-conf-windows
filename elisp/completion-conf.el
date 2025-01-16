@@ -1,7 +1,35 @@
+;; -*- lexical-binding: t; -*-
+
+
 (use-package vertico
   :ensure t
   :init
-  (vertico-mode))
+  (vertico-mode)
+  (setq vertico-cycle t))
+
+;; (use-package vertico-multiform
+;;   :hook (after-init . vertico-multiform-mode)
+;;   :init
+;;   (setq vertico-multiform-commands
+;;         '((consult-line (:not posframe))
+;;           (gopar/consult-line (:not posframe))
+;;           (consult-ag (:not posframe))
+;;           (consult-grep (:not posframe))
+;;           (consult-imenu (:not posframe))
+;;           (xref-find-definitions (:not posframe))
+;;           (t posframe))))
+
+;; (defun handle-before-make-frame-hook ()
+;;   (setq vertico-posframe-width (frame-width)))
+
+;; (use-package vertico-posframe
+;;   :hook
+;;   (after-init . vertico-posframe-mode)
+;;   :custom
+;;   (vertico-posframe-border-width 0)
+;;   (vertico-posframe-poshandler #'posframe-poshandler-frame-bottom-center)
+;;   :config
+;;   (add-hook 'before-make-frame-hook #'handle-before-make-frame-hook))
 
 (use-package savehist
   :init
@@ -26,6 +54,7 @@
   ;; C-x bindings
   ("C-x C-r" . consult-recent-file)
   ("C-x b" . consult-buffer)
+  ("C-x C-b" . consult-buffer)
   ("C-x 4 b" . consult-buffer-other-window)
   ("C-x 5 b" . consult-buffer-other-frame)
   ("C-x t b" . consult-buffer-other-tab)
@@ -74,8 +103,7 @@
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
 
   ;; Enable Corfu only for certain modes. See also `global-corfu-modes'.
-  :hook ((prog-mode . corfu-mode)
-         (eshell-mode . corfu-mode))
+  :hook ((prog-mode . corfu-mode))
   :config
   (keymap-set corfu-map "RET" #'corfu-send))
 

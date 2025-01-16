@@ -3,5 +3,16 @@ elpa/
 var/
 etc/
 server/
+eln-cache/
+eshell/
+history
+org-persist/
+projects
+recentf
+straight/
+tramp
+tree-sitter/
+
+*.stackdump
 *.bkp
 custom.el

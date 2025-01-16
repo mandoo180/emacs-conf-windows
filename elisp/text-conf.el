@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 (use-package doc-view
   :custom
   (doc-view-resolution 300)

@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 (use-package org
   :pin org
   :commands (org-capture org-agenda)
@@ -15,13 +18,10 @@
         org-image-actual-width '(450)
         org-log-done 'time
         org-log-into-drawer t
-        org-pretty-entities t
-        org-startup-indented t
+        org-pretty-entities nil
+        org-startup-indented nil
         org-startup-with-inline-images t
-        org-tags-column 80)
-  (setq-local electric-pair-inhibit-predicate `(lambda (c)
-                                                 (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))
-  )
+        org-tags-column 80))
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 (with-eval-after-load 'org
@@ -29,7 +29,7 @@
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
   (add-to-list 'org-structure-template-alist '("py" . "src python"))
-  (add-to-list 'org-structure-template-alist '("js" . "src javascript"))
+  (add-to-list 'org-structure-template-alist '("js" . "src js"))
   (add-to-list 'org-structure-template-alist '("ts" . "src typescript"))
   (add-to-list 'org-structure-template-alist '("java" . "src java"))
   (add-to-list 'org-structure-template-alist '("sql" . "src sql"))
@@ -45,6 +45,7 @@
       (latex . t)
       (python . t)
       (javascript . t)
+      (js . t)
       (typescript . t)
       (shell . t)
       (sql . t)
@@ -52,7 +53,16 @@
 
 (use-package org-appear
   :hook
-  (org-mode . org-appear-mode))
+  (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-autoemphasis t)
+  (setq org-appear-autolinks t)
+  (setq org-appear-autosubmarkers t)
+  (setq org-appear-autoentities t)
+  (setq org-appear-autokeywords t)
+  (setq org-appear-inside-latex t)
+  (setq org-appear-delay 0.0)
+  (setq org-appear-trigger 'always))
 
 (use-package org-fragtog
   :after org
@@ -61,13 +71,19 @@
   :custom
   (org-startup-with-latex-preview nil)
   (org-format-latex-options
-   (plist-put org-format-latex-options :scale 2)
+   (plist-put org-format-latex-options :scale 1)
    (plist-put org-format-latex-options :foreground 'auto)
    (plist-put org-format-latex-options :background 'auto)))
 
-(use-package org-modern
-  :hook
-  (org-mode . org-modern-mode))
+(defun handle-electric-pair-inhibit (c)
+  (if (char-equal c ?<)
+      t
+    (,electric-pair-inhibit-predicate c)))
+
+(defun handle-org-mode-hook()
+  (setq-local electric-pair-inhibit-predicate #'handle-electric-pair-inhibit))
+
+(add-hook 'org-mode-hook #'handle-org-mode-hook)
 
 
 (provide 'org-conf)

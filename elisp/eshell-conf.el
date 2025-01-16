@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 (defun eshell-new ()
   "Open a new insctance of eshell."
   (interactive)
@@ -71,12 +74,20 @@
               (eshell/alias "ff" "find-file $1")
               (eshell/alias "emacs" "find-file $1")
               (eshell/alias "ffo" "find-file-other-window $1")))
-  (add-hook 'eshell-exit-hook  #'handle-eshell-exit))
+  ;; (add-hook 'eshell-exit-hook  #'handle-eshell-exit)
+  )
 
 (use-package eshell
   :hook
   (eshell-first-time-mode . k/configure-eshell))
 
-(global-set-key (kbd "C-`") #'toggle-eshell)
+;; (global-set-key (kbd "C-`") #'toggle-eshell)
+
+(setq eshell-windows-shell-file (executable-find "bash"))
+(setq explicit-shell-file-name (executable-find "bash"))
+(setq shell-file-name (executable-find "bash"))
+(setenv "SHELL" shell-file-name)
+(setenv "BASH_ENV" "~/.bashrc")
+
 
 (provide 'eshell-conf)

@@ -1,7 +1,14 @@
+;; -*- lexical-binding: t; -*-
+
+
 (setenv "HOME" (concat "C:/Users/" user-login-name))
 (setenv "PAGER" "cat")
 (setq-default default-directory "~/")
 (setq-default user-emacs-directory "~/.emacs.d/")
+
+;; to use on msys2
+(setq package-gnupg-home "/c/Users/douzone/.emacs.d/elpa/gnupg/")
+(setq package-gnupghome-dir "/c/Users/douzone/.emacs.d/elpa/gnupg/")
 
 (setq gc-cons-threshold (* 50 1000 1000))
 
@@ -27,9 +34,9 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file t)                    ; if file doesn't exist make one
 
-(use-package no-littering)
-(setq auto-save-file-name-transforms
-      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+;; (use-package no-littering)
+;; (setq auto-save-file-name-transforms
+;;       `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
@@ -79,12 +86,13 @@
 (setq-default backup-by-copying nil)
 (setq-default mouse-yank-at-point t)
 (setq-default save-interprogram-paste-before-kill t)
-(setq-default scroll-preserve-screen-position 'always)
+(setq-default scroll-preserve-screen-position nil) ;; 'always
 (setq-default set-mark-command-repeat-pop t)
 (setq-default tooltip-delay 0.1)
 (setq-default use-short-answers t)
 
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
+(setq system-time-locale "C")
 
 (provide 'basic-conf)

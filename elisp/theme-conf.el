@@ -1,8 +1,9 @@
-;; scoop install nerd-fonts/JetBrainsMono-NF
-;; M: (font-family-list) shows available fonts
-(set-face-attribute 'default nil :font "JetBrainsMono NF Thin" :height 100)
+;; -*- lexical-binding: t; -*-
 
-;; (load-theme 'modus-vivendi)
+
+(setq ks/frame-transparency '(95 . 95))
+(set-frame-parameter (selected-frame) 'alpha ks/frame-transparency)
+(add-to-list 'default-frame-alist `(alpha . ,ks/frame-transparency))
 
 (use-package rainbow-mode
   :config
@@ -12,21 +13,36 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
-(use-package all-the-icons
-  :ensure t)
+;; (use-package all-the-icons
+;;   :ensure t)
 
-(use-package nerd-icons
-  :ensure nil) ;; M-x nerd-icons-install-fonts
+;; (use-package nerd-icons
+;;   :ensure nil) ;; M-x nerd-icons-install-fonts
 
-(use-package doom-themes
-  :config
-  (load-theme 'doom-one))
+(defun ks/theme-config ()
+  (load-file (expand-file-name "hasliberg-theme.el" "~/.emacs.d/custom/hasliberg-theme"))
+  (enable-theme 'hasliberg)
+  (hasliberg-theme-use-dark-monotonic-colour-palette)
+  ;; scoop install nerd-fonts/JetBrainsMono-NF
+  ;; scoop install nerd-fonts/Iosevka-NF
+  ;; M: (font-family-list) shows available fonts
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-face-attribute 'mode-line-inactive nil :box nil)
+  (set-face-attribute 'default nil :font "Iosevka NF")
+  (set-face-attribute 'default nil :height 110)
+  (set-fontset-font t 'hangul (font-spec :name "D2Coding"))
+  (setq face-font-rescale-alist '(("D2Coding" . 1.1))))
 
-(use-package doom-modeline
-  :init
-  (doom-modeline-mode 1))
-(set-face-attribute 'mode-line nil :box nil)
-(set-face-attribute 'mode-line-inactive nil :box nil)
+(defun handle-frame-hook (frame)
+  (with-selected-frame frame (ks/theme-config)))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions 'handle-frame-hook)
+  (ks/theme-config))
+
+;; (use-package doom-modeline
+;;   :init
+;;   (doom-modeline-mode 1))
 
 (use-package paren
   :init

@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 (use-package tab-bar
   :ensure nil
   ;; tab-bar prefix = C-x t

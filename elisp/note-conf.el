@@ -1,3 +1,6 @@
+;; -*- lexical-binding: t; -*-
+
+
 (use-package denote
   :custom
   (denote-sort-keywords t)

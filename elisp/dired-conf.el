@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; (use-package dired-single
 ;;   :commands (dired dired-jump))
 
@@ -27,8 +29,8 @@
 
 (add-hook 'dired-mode-hook (lambda() (dired-hide-details-mode t)))
 
-(define-key dired-mode-map (kbd "b") 'dired-up-directory)
-(define-key dired-mode-map (kbd "H") 'dired-hide-details-mode)
+;; (define-key dired-mode-map (kbd "b") 'dired-up-directory)
+;; (define-key dired-mode-map (kbd "H") 'dired-hide-details-mode)
 
 
 (provide 'dired-conf)

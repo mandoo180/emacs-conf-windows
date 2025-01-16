@@ -1,7 +1,12 @@
+;; -*- lexical-binding: t; -*-
+
+
 (use-package winner
   :ensure t
   :config
   (winner-mode t))
+
+(use-package ace-window)
 
 (defun k/split-window()
   "Split the window to see the most recent buffer in the other window.

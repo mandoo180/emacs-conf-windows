@@ -1,27 +1,46 @@
+;; -*- lexical-binding: t; -*-
+
+
 ;; M-. goto definition
 ;; M-, goto implementation
 ;; M-? xref-find-references
 (use-package eglot
-  :ensure t
   :defer t
   :hook
   (c-mode . eglot-ensure) ;; scoop bucket add versions; scoop install versions/mingw-winlibs-llvm // install clang, clangd
   (mhtml-mode . eglot-ensure) ;; npm i -g vscode-langservers-extracted
   (python-mode . eglot-ensure) ;; pip install python-lsp-server flake8 // ;; python-lsp-server's executable is pylsp
   (javascript-mode . eglot-ensure) ;; npm i -g install typescript typescript-language-server
+  (js2-mode . eglot-ensure)
   (typescript-ts-mode . eglot-ensure))
 
-(use-package tree-sitter
-  :ensure t
-  :diminish 'tree-sitter)
+;; (require 'treesit)
 
-(use-package tree-sitter-langs
-  :ensure t)
+;; (add-to-list 'treesit-language-source-alist '(python "https://github.com/tree-sitter/tree-sitter-python.git"))
+;; (add-to-list 'treesit-language-source-alist '(c "https://github.com/tree-sitter/tree-sitter-c.git"))
+;; (add-to-list 'treesit-language-source-alist '(java "https://github.com/tree-sitter/tree-sitter-java.git"))
+;; (add-to-list 'treesit-language-source-alist '(typescript "https://github.com/tree-sitter/tree-sitter-typescript.git"))
+;; (add-to-list 'treesit-language-source-alist '(javascript "https://github.com/tree-sitter/tree-sitter-javascript.git"))
+;; (add-to-list 'treesit-language-source-alist '(css "https://github.com/tree-sitter/tree-sitter-css.git"))
+;; (add-to-list 'treesit-language-source-alist '(html "https://github.com/tree-sitter/tree-sitter-html.git"))
+;; (add-to-list 'treesit-language-source-alist '(bash "https://github.com/tree-sitter/tree-sitter-bash.git"))
 
-(global-tree-sitter-mode t)
+;; (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+;; (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+;; (add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode))
+;; (add-to-list 'major-mode-remap-alist '(tsx-mode . typescript-ts-mode))
+;; (add-to-list 'major-mode-remap-alist '(js-mode . js-ts-mode))
+;; (add-to-list 'major-mode-remap-alist '(css-mode . css-ts-mode))
+;; (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+
+;; (use-package tree-sitter)
+
+;; (use-package tree-sitter-langs)
+
+;; (global-tree-sitter-mode t)
 
 (setq-default initial-scratch-message
-              (concat ";; " user-login-name "'s cratch pad.\n\n"))
+              (concat ";; " user-login-name "'s scratch pad.\n\n"))
 
 (use-package ielm
   :init
@@ -46,14 +65,15 @@
       (goto-char (point-max))
       (insert ";;; " fname " ends here\n"))))
 
+;; pp-eval-last-sexp
 (defun k/eval-last-sexp-or-region (prefix)
   "Eval region from BEG to END if active, otherwise the last sexp."
   (interactive "P")
   (if (and (mark) (use-region-p))
       (eval-region (min (point) (mark)) (max (point) (mark)))
-    (pp-eval-last-sexp prefix)))
+    (eval-last-sexp prefix)))
 
-(global-set-key [remap eval-expression] 'pp-eval-expression)
+;; (global-set-key [remap eval-expression] 'pp-eval-expression)
 
 (defun k/load-this-file ()
   "Load the current file or buffer.
@@ -157,7 +177,7 @@ there is no current file, eval the current buffer."
 (use-package flycheck
   :ensure t
   :init
-  (add-hook 'after-init-hook 'global-flycheck-mode)
+  ;; (add-hook 'after-init-hook 'global-flycheck-mode)
   :config
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 
