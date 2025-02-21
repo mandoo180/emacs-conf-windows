@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dzqb
+# key: dzqb
+# --
+@DzParam(key = "$2", desc = "", paramType = Body) $1 $2$0

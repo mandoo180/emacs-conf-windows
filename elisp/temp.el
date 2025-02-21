@@ -31,6 +31,10 @@
   (popper-mode 1)
   (popper-echo-mode 1))
 
-
+(use-package gptel
+  :config
+  (exec-path-from-shell-copy-env "OPENAI_API_KEY")
+  (setq gptel-api-key (getenv "OPENAI_API_KEY"))
+  (setq gptel-default-mode 'org-mode))
 
 (provide 'temp)

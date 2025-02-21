@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: dzparam
+# key: dzparam
+# --
+Map<String, Object> params = new HashMap<>();
+params.put("P_COMPANY_CD", this.getCompanyCode());

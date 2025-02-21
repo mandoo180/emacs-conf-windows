@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: dzapipost
+# key: dzapipost
+# --
+dews.api.post(dews.url.getApiUrl('$1', '$2', '$3'), {
+  data: {
+    data: JSON.stringify($4),
+  },
+});

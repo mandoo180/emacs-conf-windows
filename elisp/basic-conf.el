@@ -44,7 +44,9 @@
 (set-fringe-mode 10)
 (menu-bar-mode 0)
 (column-number-mode 1)
-(cua-mode 1)
+;; (cua-mode 1)
+(display-time-mode 1)
+(setq display-time-24hr-format 1)
 
 (setq-default inhibit-startup-screen t)
 (setq-default inhibit-startup-message t)

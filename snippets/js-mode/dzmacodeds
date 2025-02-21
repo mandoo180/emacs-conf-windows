@@ -1,0 +1,45 @@
+# -*- mode: snippet -*-
+# name: dzmacodeds
+# key: dzmacodeds
+# --
+
+self.ds_$1_$2 = dews.ui.dataSource('ds_$1_$2', {
+  transport: {
+    read: {
+      url: dews.url.getApiUrl('HR', 'HrCommonService', 'getMaCodedtl'),
+      data: function () {
+        return {
+          sysdef_cd: '',
+          field_nm: '',
+          field_cd: '$2',
+          module_cd: '$1',
+          sysdef_nm: '',
+          company_cd: self.user.companyCode,
+          flag_cd: ''
+        };
+      }
+    }
+  },
+  schema: {
+    model: {
+      fields: [
+        { field: 'COMPANY_CD', editable: false, type: 'string' }, 
+        { field: 'MODULE_CD', editable: false, type: 'string' }, 
+        { field: 'FIELD_CD', editable: false, type: 'string' }, 
+        { field: 'SYSDEF_CD', editable: false, type: 'string' }, 
+        { field: 'ORG_SYSDEF_NM', editable: false, type: 'string' }, 
+        { field: 'SYSDEF_NM', editable: false, type: 'string' }, 
+        { field: 'SYSDEF_NM2', editable: false, type: 'string' }, 
+        { field: 'SYSCODE_YN', editable: false, type: 'string' }, 
+        { field: 'BASE_YN', editable: false, type: 'string' }, 
+        { field: 'DISP_SQ', editable: false, type: 'string' }, 
+        { field: 'FLAG_CD', editable: false, type: 'string' }, 
+        { field: 'END_DT', editable: false, type: 'string' }, 
+        { field: 'INSERT_ID', editable: false, type: 'string' }, 
+        { field: 'INSERT_DTS', editable: false, type: 'string' }, 
+        { field: 'UPDATE_ID', editable: false, type: 'string' }, 
+        { field: 'UPDATE_DTS', editable: false, type: 'string' }
+      ]
+    }
+  }
+});

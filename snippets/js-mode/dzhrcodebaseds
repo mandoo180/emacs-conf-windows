@@ -1,0 +1,34 @@
+# -*- mode: snippet -*-
+# name: dzhrcodebaseds
+# key: dzhrcodebaseds
+# --
+self.ds_HR_$1 = dews.ui.dataSource('ds_HR_$1', {
+  transport: {
+    read: {
+      url: dews.url.getApiUrl('HR', 'HrCommonService', 'getCodebaseMstData'),
+      data: function () {
+        return {
+          flag: '',
+          menu_cd: '$1',
+          hr_dtl_cd: '',
+          use_yn: '',
+          hr_cd: ''
+        };
+      }
+    }
+  },
+  schema: {
+    model: {
+      fields: [
+        { field: 'COMPANY_CD', editable: false, type: 'string' }, 
+        { field: 'MENU_CD', editable: false, type: 'string' }, 
+        { field: 'HR_CD', editable: false, type: 'string' }, 
+        { field: 'HR_CD_NM', editable: false, type: 'string' }, 
+        { field: 'HR_DTL_CD', editable: false, type: 'string' }, 
+        { field: 'HR_DTL_CD_NM', editable: false, type: 'string' }, 
+        { field: 'USE_YN', editable: false, type: 'string' }
+      ]
+      
+    }
+  }
+});

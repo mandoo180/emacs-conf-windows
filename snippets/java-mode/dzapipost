@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: dzapipost
+# key: dzapipost
+# --
+@DzApi(url = "/$1", desc = "Post", httpMethod = POST)
+public void $2() {
+    try {
+        // TODO: implement
+        $0
+    } catch (Exception e) {
+        throw new DzApplicationRuntimeException(e);
+    }
+}

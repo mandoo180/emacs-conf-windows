@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: dzmacodeparam
+# key: dzmacodeparam
+# --
+function() {
+    return {
+        company_cd: self.user.companyCode,
+        module_cd: 'HR',
+        field_cd: '',
+        field_nm: '',
+        sysdef_cd: '',
+        sysdef_nm: '',
+        flag_cd: '',
+    }
+}

@@ -21,7 +21,8 @@
         org-pretty-entities nil
         org-startup-indented nil
         org-startup-with-inline-images t
-        org-tags-column 80))
+        org-tags-column 80
+        org-src-window-setup 'current-window))
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 (with-eval-after-load 'org
@@ -40,16 +41,15 @@
    (seq-filter
     (lambda (pair)
       (locate-library (concat "ob-" (symbol-name (car pair)))))
-    '((dot . t)
-      (gnuplot . t)
-      (latex . t)
+    '((latex . t)
       (python . t)
       (javascript . t)
       (js . t)
       (typescript . t)
       (shell . t)
       (sql . t)
-      (sqlite . t)))))
+      (sqlite . t)
+      (scheme . t)))))
 
 (use-package org-appear
   :hook

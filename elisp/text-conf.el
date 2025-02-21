@@ -6,9 +6,21 @@
   (doc-view-resolution 300)
   (large-file-warning-threshold (* 50 (expt 2 20))))
 
+
+(use-package visual-fill-column)
+
+(defun handle-nov-hook()
+  (face-remap-add-relative 'variable-pitch :family "Iosevka NF" :weight 'thin))
+
 (use-package nov
   :init
-  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode)))
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  :config
+  (setq nov-text-width t)
+  (setq visual-fill-column-center-text t)
+  (add-hook 'nov-mode-hook 'visual-line-mode)
+  (add-hook 'nov-mode-hook 'visual-fill-column-mode)
+  (add-hook 'nov-mode-hook 'handle-nov-hook))
 
 (use-package dictionary
   :custom

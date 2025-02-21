@@ -33,9 +33,9 @@
 ;; (add-to-list 'major-mode-remap-alist '(css-mode . css-ts-mode))
 ;; (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
 
-;; (use-package tree-sitter)
+(use-package tree-sitter)
 
-;; (use-package tree-sitter-langs)
+(use-package tree-sitter-langs)
 
 ;; (global-tree-sitter-mode t)
 
@@ -188,5 +188,16 @@ there is no current file, eval the current buffer."
 ;; use pyvenv-activate/deactivate
 (use-package pyvenv)
 
+
+;; sql settings
+;; give me nice indenting for sql
+(use-package sql-indent
+  :config
+  (add-hook 'sql-mode-hook #'sqlind-minor-mode))
+
+;; scheme settings -> guile
+(use-package geiser-guile
+  :config
+  (setq geiser-scheme-implementation 'guile))
 
 (provide 'lang-conf)

@@ -5,7 +5,7 @@
                 prog-mode-hook
                 conf-mode-hook))
   (add-hook mode (lambda ()
-                   (hl-line-mode 1)
+                   ;; (hl-line-mode 1)
                    (display-line-numbers-mode 1)
                    (setq display-line-numbers-width 6)
                    (display-fill-column-indicator-mode 0))))

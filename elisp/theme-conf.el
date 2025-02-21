@@ -20,12 +20,13 @@
 ;;   :ensure nil) ;; M-x nerd-icons-install-fonts
 
 (defun ks/theme-config ()
-  (load-file (expand-file-name "hasliberg-theme.el" "~/.emacs.d/custom/hasliberg-theme"))
-  (enable-theme 'hasliberg)
-  (hasliberg-theme-use-dark-monotonic-colour-palette)
+  ;; (load-file (expand-file-name "hasliberg-theme.el" "~/.emacs.d/custom/hasliberg-theme"))
+  ;; (enable-theme 'hasliberg)
+  ;; (hasliberg-theme-use-dark-monotonic-colour-palette)
   ;; scoop install nerd-fonts/JetBrainsMono-NF
   ;; scoop install nerd-fonts/Iosevka-NF
   ;; M: (font-family-list) shows available fonts
+  (doom-modeline-mode 1)
   (set-face-attribute 'mode-line nil :box nil)
   (set-face-attribute 'mode-line-inactive nil :box nil)
   (set-face-attribute 'default nil :font "Iosevka NF")
@@ -40,9 +41,13 @@
     (add-hook 'after-make-frame-functions 'handle-frame-hook)
   (ks/theme-config))
 
-;; (use-package doom-modeline
-;;   :init
-;;   (doom-modeline-mode 1))
+(use-package doom-themes
+  :config
+  (load-theme 'doom-one))
+
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode 1))
 
 (use-package paren
   :init

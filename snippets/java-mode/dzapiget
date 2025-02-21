@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: dzapiget
+# key: dzapiget
+# --
+@DzApi(url = "/$1", desc = "Get", httpMethod = GET)
+public List<Map<String, Object>> $2() {
+    try {
+        // TODO: implement
+        $0
+        return null;
+    } catch (Exception e) {
+        throw new DzApplicationRuntimeException(e);
+    }
+}
