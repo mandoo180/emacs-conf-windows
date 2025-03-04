@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: jinja-new-block
+# key: jinja-new-block
+# --
+
+{% extends '$1' %}
+
+{% block $2 %}
+$0
+{% endblock %}
