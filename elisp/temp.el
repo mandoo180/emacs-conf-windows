@@ -47,18 +47,13 @@
     (message "src: %s, dest: %s" src dest)
     (copy-file src dest t)))
 
-(package-vc-install '(ultra-scroll :vc-backend Git :url  "https://github.com/jdtsmith/ultra-scroll"))
+(unless (require 'ultra-scroll nil 'noerror)
+  (package-vc-install '(ultra-scroll
+                        :vc-backend Git
+                        :url  "https://github.com/jdtsmith/ultra-scroll")))
 (setq scroll-conservatively 101 ; important!
-      scroll-margin 0)
+        scroll-margin 0)
 (ultra-scroll-mode 1)
-
-(use-package ultra-scroll
-  ;:load-path "~/code/emacs/ultra-scroll" ; if you git clone'd instead of package-vc-install
-  :init
-  (setq scroll-conservatively 101 ; important!
-        scroll-margin 0) 
-  :config
-  (ultra-scroll-mode 1))
 
 (provide 'temp)
 

@@ -26,13 +26,16 @@
   ;; scoop install nerd-fonts/JetBrainsMono-NF
   ;; scoop install nerd-fonts/Iosevka-NF
   ;; M: (font-family-list) shows available fonts
+  
   (doom-modeline-mode 1)
   (set-face-attribute 'mode-line nil :box nil)
   (set-face-attribute 'mode-line-inactive nil :box nil)
   (set-face-attribute 'default nil :font "Iosevka NF")
   (set-face-attribute 'default nil :height 110)
   (set-fontset-font t 'hangul (font-spec :name "D2Coding"))
-  (setq face-font-rescale-alist '(("D2Coding" . 1.1))))
+  (setq face-font-rescale-alist '(("D2Coding" . 1.1)))
+  (load-theme 'hasliberg 'noerror)
+  (hasliberg-theme-use-dark-monotonic-colour-palette))
 
 (defun handle-frame-hook (frame)
   (with-selected-frame frame (ks/theme-config)))
@@ -41,13 +44,13 @@
     (add-hook 'after-make-frame-functions 'handle-frame-hook)
   (ks/theme-config))
 
-(use-package doom-themes
-  :config
-  (load-theme 'doom-one))
+;; (use-package doom-themes
+;;   :config
+;;   (load-theme 'doom-one))
 
-(use-package doom-modeline
-  :init
-  (doom-modeline-mode 1))
+;; (use-package doom-modeline
+;;   :init
+;;   (doom-modeline-mode 1))
 
 (use-package paren
   :init
