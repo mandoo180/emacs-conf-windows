@@ -83,11 +83,11 @@
 
 ;; (global-set-key (kbd "C-`") #'toggle-eshell)
 
-(setq eshell-windows-shell-file (executable-find "bash"))
-(setq explicit-shell-file-name (executable-find "bash"))
-(setq shell-file-name (executable-find "bash"))
+(setq eshell-windows-shell-file (executable-find "pwsh"))
+(setq explicit-shell-file-name (executable-find "pwsh"))
+(setq shell-file-name (executable-find "pwsh"))
 (setenv "SHELL" shell-file-name)
-(setenv "BASH_ENV" "~/.bashrc")
+;; (setenv "BASH_ENV" "~/.bashrc")
 
 
 (provide 'eshell-conf)

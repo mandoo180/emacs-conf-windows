@@ -40,7 +40,7 @@
 ;; (global-tree-sitter-mode t)
 
 (setq-default initial-scratch-message
-              (concat ";; " user-login-name "'s scratch pad.\n\n"))
+              (concat ";; scratch pad\n\n"))
 
 (use-package ielm
   :init

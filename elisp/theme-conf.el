@@ -5,13 +5,11 @@
 (set-frame-parameter (selected-frame) 'alpha ks/frame-transparency)
 (add-to-list 'default-frame-alist `(alpha . ,ks/frame-transparency))
 
-(use-package rainbow-mode
-  :config
-  (rainbow-mode t))
+(use-package rainbow-mode)
 
-(use-package rainbow-delimiters
-  :hook
-  (prog-mode . rainbow-delimiters-mode))
+;; (use-package rainbow-delimiters
+;;   :hook
+;;   (prog-mode . rainbow-delimiters-mode))
 
 ;; (use-package all-the-icons
 ;;   :ensure t)
