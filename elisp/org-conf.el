@@ -35,6 +35,7 @@
   (add-to-list 'org-structure-template-alist '("java" . "src java"))
   (add-to-list 'org-structure-template-alist '("sql" . "src sql"))
   (add-to-list 'org-structure-template-alist '("rust" . "src rust"))
+  (add-to-list 'org-structure-template-alist '("scm" . "src scheme"))
 
   (org-babel-do-load-languages
    'org-babel-load-languages

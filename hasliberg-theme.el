@@ -715,28 +715,28 @@ black colours."
    ;;------------------------------------------
    `(org-document-title
      ((t :foreground ,(hasliberg-theme-hex-for 'neutral-700)
-         :family "Medio"
-         :height 3.0)))
+         ;; :family "Medio"
+         :height 1.5)))
    `(org-level-1
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'accent-500)
-         :height 1.5)))
+         :height 1.4)))
    `(org-level-2
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'accent-600)
-         :height 1.25)))
+         :height 1.35)))
    `(org-level-3
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'accent-700)
-         :height 1.125)))
+         :height 1.3)))
    `(org-level-4
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'accent-variant-800)
-         :height 1.0625)))
+         :height 1.25)))
    `(org-level-5
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'accent-variant-900)
-         :height 1.0625)))
+         :height 1.2)))
    `(org-level-6
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'accent-variant-900))))
@@ -755,7 +755,7 @@ black colours."
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'accent-700)
          :underline nil
-         :height 0.7)))
+         :height 0.9)))
    ;; This sets the line height without affecting font size.
    `(org-hide ((t :height 1.2)))
    ;; For code block, keep the background untouched as it would render strangely
@@ -769,14 +769,14 @@ black colours."
          :foreground ,(hasliberg-theme-hex-for 'primary-400)
          :overline   ,(hasliberg-theme-hex-for 'background-700)
          :family "Iosevka NF"
-         :height 0.80)))
+         :height 0.9)))
    `(org-block-end-line
      ((t :inherit (default)
          :background ,(hasliberg-theme-hex-for 'background-500)
          :foreground ,(hasliberg-theme-hex-for 'primary-400)
          :underline (:color ,(hasliberg-theme-hex-for 'background-700) :position 0)
          :family "Iosevka NF"
-         :height 0.75)))
+         :height 0.9)))
    `(org-quote
      ((t :foreground ,(hasliberg-theme-hex-for 'accent-900) :height 1.1)))
    `(org-verse
@@ -792,7 +792,7 @@ black colours."
    `(org-document-info-keyword
      ((t :inherit default
          :foreground ,(hasliberg-theme-hex-for 'neutral-300)
-         :height 0.8)))
+         :height 0.9)))
    `(org-meta-line ((t :inherit org-document-info-keyword)))
    `(org-checkbox ((t :inherit default :box nil)))
 

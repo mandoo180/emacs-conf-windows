@@ -12,6 +12,8 @@ recentf
 straight/
 tramp
 tree-sitter/
+request/
+url/
 
 *.stackdump
 *.bkp
